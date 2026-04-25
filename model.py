@@ -40,19 +40,10 @@ y = to_categorical(y, num_classes=10)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=104, test_size=0.20, shuffle=True)
 
-from keras.layers import Conv2D, MaxPooling2D
-
 model = Sequential([
     Input(shape=(32, 32, 1)),
-
-    Conv2D(32, (3, 3), activation='relu'),
-    MaxPooling2D((2, 2)),
-
-    Conv2D(64, (3, 3), activation='relu'),
-    MaxPooling2D((2, 2)),
-
     Flatten(),
-
+    Dense(128, activation='relu'),
     Dense(64, activation='relu'),
     Dense(10, activation='softmax')
 ])
@@ -68,16 +59,20 @@ plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
 plt.legend()
 plt.show()
 
-#saving the model
+# ===== SAVE MODEL =====
 import os
 from keras.models import load_model
+
+# create folder if it doesn't exist
 os.makedirs("models", exist_ok=True)
 
-model_path = "models/digit_model_cnn.keras"
+# save full model (recommended format)
+model_path = "models/digit_model.keras"
 model.save(model_path)
 
 print(f"Model saved to: {model_path}")
 
+# ===== OPTIONAL: LOAD TEST (to verify it works) =====
 loaded_model = load_model(model_path)
 loss, acc = loaded_model.evaluate(x_test, y_test)
 print(f"Loaded model accuracy: {acc * 100:.2f}%")
