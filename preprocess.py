@@ -5,7 +5,7 @@ import os
 
 import os
 
-p = "group16-image/data/train/train/0"
+p = "data/train/train/8"
 
 rows = []
 
@@ -23,10 +23,10 @@ for e in os.scandir(p):
         rows.append(row)
 
 df = pd.DataFrame(rows)
-df.to_csv("0_processed.csv", index=False)
+df.to_csv("8_processed.csv", index=False)
 
 
-p = "group16-image/data/train/train/3"
+p = "data/train/train/9"
 
 rows = []
 
@@ -44,4 +44,4 @@ for e in os.scandir(p):
         rows.append(row)
 
 df = pd.DataFrame(rows)
-df.to_csv("3_processed.csv", index=False)
+df.to_csv("9_processed.csv", index=False)
