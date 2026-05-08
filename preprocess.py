@@ -16,7 +16,7 @@ for e in os.scandir(p):
 
         row = {
             "id": e.name,
-            "label": 0,
+            "label": 8,
             **{f"px_{i}": v for i, v in enumerate(flat_img)}
         }
 
@@ -37,7 +37,7 @@ for e in os.scandir(p):
 
         row = {
             "id": e.name,
-            "label": 3,
+            "label": 9,
             **{f"px_{i}": v for i, v in enumerate(flat_img)}
         }
 
